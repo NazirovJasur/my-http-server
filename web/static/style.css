@@ -1,0 +1,33 @@
+body {
+    font-family: system-ui, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f5f5f5;
+    color: #222;
+}
+header {
+    border-bottom: 2px solid #333;
+    margin-bottom: 20px;
+}
+nav a { margin-right: 10px; }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: left;
+}
+th { background: #eee; }
+form p { margin: 10px 0; }
+input { padding: 6px; width: 100%; max-width: 300px; }
+button {
+    padding: 8px 16px;
+    background: #f85300;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
