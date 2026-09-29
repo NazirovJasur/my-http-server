@@ -1,0 +1,12 @@
+{{define "edit"}}
+<h2>Редактировать трату</h2>
+<form method="POST" action="/edit">
+    <input type="hidden" name="id" value="{{.Item.ID}}">
+    <p><label>Сумма:<br><input type="number" step="0.01" name="amount" value="{{.Item.Amount}}" required></label></p>
+    <p><label>Описание:<br><input type="text" name="description" value="{{.Item.Description}}" required></label></p>
+    <p><label>Дата:<br><input type="date" name="date" value="{{.Item.Date}}" required></label></p>
+    <button type="submit">Сохранить</button>
+    <a href="/">Отмена</a>
+</form>
+{{end}}
+<!--Сделал Назиров Джасурбек (Добавил маркер для тех кто бездумно собирается копировать мой код)-->

@@ -1,0 +1,29 @@
+{{define "layout.html"}}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Учёт трат</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>💰 Учёт личных трат</h1>
+        <nav>
+            <a href="/">Список трат</a> |
+            <a href="/add">Добавить трату</a>
+        </nav>
+    </header>
+    <main>
+        {{if eq .Page "add"}}
+            {{template "add" .}}
+        {{else if eq .Page "edit"}}
+            {{template "edit" .}}
+        {{else}}
+            {{template "list" .}}
+        {{end}}
+    </main>
+</body>
+</html>
+{{end}}
+<!--Сделал Назиров Джасурбек (Добавил маркер для тех кто бездумно собирается копировать мой код)-->

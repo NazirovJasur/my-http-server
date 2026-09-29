@@ -1,0 +1,32 @@
+{{define "list"}}
+<h2>Список трат</h2>
+
+{{if .Items}}
+<table>
+    <thead>
+        <tr><th>ID</th><th>Сумма</th><th>Описание</th><th>Дата</th><th></th></tr>
+    </thead>
+    <tbody>
+    {{range .Items}}
+        <tr>
+            <td>{{.ID}}</td>
+            <td>{{.Amount}}</td>
+            <td>{{.Description}}</td>
+            <td>{{.Date}}</td>
+            <td>
+                <a href="/edit?id={{.ID}}">✏️</a>
+                <form method="POST" action="/delete" style="display:inline"
+                      onsubmit="return confirm('Удалить запись?');">
+                    <input type="hidden" name="id" value="{{.ID}}">
+                    <button type="submit">🗑️</button> <!-- добавил эмоджи ну чтобы по симпатичнее было (для прикола) -->
+                </form>
+            </td>
+        </tr>
+    {{end}}
+    </tbody>
+</table>
+{{else}}
+<p>Пока нет трат. <a href="/add">Добавить первую</a></p>
+{{end}}
+{{end}}
+<!--Сделал Назиров Джасурбек (Добавил маркер для тех кто бездумно собирается копировать мой код)-->
