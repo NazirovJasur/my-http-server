@@ -1,0 +1,48 @@
+{{define "list"}}
+<h2>Список трат</h2>
+
+<!-- Фильтры -->
+<form method="GET" action="/" style="margin-bottom: 20px; padding: 10px; background: #e9e9e9;">
+    <label>Категория: 
+        <select name="category">
+            <option value="">Все</option>
+            {{range .Categories}}
+                <option value="{{.ID}}" {{if eq .ID $.FilterCat}}selected{{end}}>{{.Name}}</option>
+            {{end}}
+        </select>
+    </label>
+    <label>С: <input type="date" name="from" value="{{.FilterFrom}}"></label>
+    <label>По: <input type="date" name="to" value="{{.FilterTo}}"></label>
+    <button type="submit">Фильтровать</button>
+    <a href="/">Сбросить</a>
+</form>
+
+{{if .Items}}
+<table>
+    <thead>
+        <tr><th>ID</th><th>Сумма</th><th>Описание</th><th>Категория</th><th>Дата</th><th></th></tr>
+    </thead>
+    <tbody>
+    {{range .Items}}
+        <tr>
+            <td>{{.ID}}</td>
+            <td>{{.Amount}}</td>
+            <td>{{.Description}}</td>
+            <td>{{.CategoryName}}</td>
+            <td>{{.Date}}</td>
+            <td>
+                <a href="/edit?id={{.ID}}">✏️</a>
+                <form method="POST" action="/delete" style="display:inline" onsubmit="return confirm('Удалить запись?');">
+                    <input type="hidden" name="id" value="{{.ID}}">
+                    <button type="submit">🗑️</button>
+                </form>
+            </td>
+        </tr>
+    {{end}}
+    </tbody>
+</table>
+{{else}}
+<p>Пока нет трат. <a href="/add">Добавить первую</a></p>
+{{end}}
+{{end}}
+<!--Сделал Назиров Джасурбек (Добавил маркер для тех кто бездумно собирается копировать мой код)-->
